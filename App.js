@@ -7,21 +7,16 @@ let titrePage = "BlackJack-App";
 
 export default function App() {
 
-  const [contenuBouton, setContenuBouton] = useState(false);
+  const [contenuBouton, setContenuBouton] = useState(" ");
 
-  const handlePress = function (){
-    setContenuBouton(!contenuBouton)
-    //if (contenuBouton == true){
-    //  setContenuBouton(false);
-    //}else{
-    //  setContenuBouton(true);
-    //}
+  const handlePress1 = function (){
+    setContenuBouton("Page1")
   }
-  
-  let titreBouton = "Afficher";
-
-  if(contenuBouton === true){  //Ecriture ternaire  : afficher === true ? "Cacher" : "Afficher"
-    titreBouton = "Cacher"
+  const handlePress2 = function (){
+    setContenuBouton("Page2")
+  }
+  const handlePress3 = function (){
+    setContenuBouton("Page3")
   }
     
   return (
@@ -29,11 +24,21 @@ export default function App() {
       <Header title={titrePage}/>
       <View style={styles.body}>
 
-        {contenuBouton == true &&
-          <Text>coucou</Text>
+        {contenuBouton === "Page1" &&
+          <Text>page1</Text>
+        }
+
+        {contenuBouton === "Page2" &&
+          <Text>page2</Text>
+        }
+
+        {contenuBouton === "Page3" &&
+          <Text>page3</Text>
         }
         
-        <Button title={titreBouton} onPress={handlePress}></Button>
+        <Button title="Page1" onPress={handlePress1}></Button>
+        <Button title="Page2" onPress={handlePress2}></Button>
+        <Button title="Page3" onPress={handlePress3}></Button>
       </View>
       <StatusBar style="auto" />
     </View>
