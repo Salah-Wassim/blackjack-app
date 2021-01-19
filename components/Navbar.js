@@ -1,10 +1,10 @@
 import React from 'react';
 import {StyleSheet, View, Button, Text, ViewBase} from 'react-native';
 
-export default function(){
+export default function(props){
     return(
         <View>
-           
+            
         </View>
     );
 }

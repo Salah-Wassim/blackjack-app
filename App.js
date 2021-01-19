@@ -1,44 +1,49 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
+
 import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 
 let titrePage = "BlackJack-App";
 
+const pages = [
+  {
+    id : "page1",
+    title : "Page1",
+  },
+  {
+    id : "page2",
+    title : "Page2",
+  },
+  {
+    id : "page3",
+    title : "Page3",
+  },
+];
+
 export default function App() {
 
-  const [contenuBouton, setContenuBouton] = useState(" ");
+  const [page, setPage] = useState("page1");
+  
+  let Page = [];
+  let button = [];
+  for(let i = 0; i<pages.length; i++){
+    if(pages[i].id === page){
+      Page.push(<Text>{pages[i].id}</Text>)
+    }
+    button.push(<Button onPress={function(){
+      setPage(pages[i].id)
+    }} title={pages[i].title}></Button>)
+  };
 
-  const handlePress1 = function (){
-    setContenuBouton("Page1")
-  }
-  const handlePress2 = function (){
-    setContenuBouton("Page2")
-  }
-  const handlePress3 = function (){
-    setContenuBouton("Page3")
-  }
-    
   return (
     <View style={styles.container}>
+      <Navbar></Navbar>
       <Header title={titrePage}/>
       <View style={styles.body}>
-
-        {contenuBouton === "Page1" &&
-          <Text>page1</Text>
-        }
-
-        {contenuBouton === "Page2" &&
-          <Text>page2</Text>
-        }
-
-        {contenuBouton === "Page3" &&
-          <Text>page3</Text>
-        }
-        
-        <Button title="Page1" onPress={handlePress1}></Button>
-        <Button title="Page2" onPress={handlePress2}></Button>
-        <Button title="Page3" onPress={handlePress3}></Button>
+        {Page}
+        {button}
       </View>
       <StatusBar style="auto" />
     </View>
