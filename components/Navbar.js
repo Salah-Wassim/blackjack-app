@@ -8,3 +8,7 @@ export default function(props){
         </View>
     );
 }
+
+const style = StyleSheet.create({
+    /**/
+});

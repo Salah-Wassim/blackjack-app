@@ -1,49 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
 
 let titrePage = "BlackJack-App";
 
-const pages = [
-  {
-    id : "page1",
-    title : "Page1",
-  },
-  {
-    id : "page2",
-    title : "Page2",
-  },
-  {
-    id : "page3",
-    title : "Page3",
-  },
-];
 
 export default function App() {
-
-  const [page, setPage] = useState("page1");
-  
-  let Page = [];
-  let button = [];
-  for(let i = 0; i<pages.length; i++){
-    if(pages[i].id === page){
-      Page.push(<Text>{pages[i].id}</Text>)
-    }
-    button.push(<Button onPress={function(){
-      setPage(pages[i].id)
-    }} title={pages[i].title}></Button>)
-  };
-
+  const [value, onChangeText] = React.useState('Entrez un mot un texte');
   return (
     <View style={styles.container}>
       <Navbar></Navbar>
       <Header title={titrePage}/>
       <View style={styles.body}>
-        {Page}
-        {button}
+        <Text></Text>
+        <TextInput style={{height: 40, borderColor: "#AAA", 
+        borderWidth: 1}} 
+        onChangeText={text => onChangeText(text)}/> 
       </View>
       <StatusBar style="auto" />
     </View>
